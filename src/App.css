@@ -1,0 +1,85 @@
+.header {
+  /* background-color: red; */
+  max-width: 1160px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+.inputContainer {
+  background-color: #eee;
+  width: 1140px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.inputFieldContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputField {
+  padding-left: 10px;
+  margin: 20px;
+  width: 260px;
+  height: 38px;
+  border: none;
+  border-radius: 12px;
+}
+
+.addButton {
+  background-color: teal;
+  width: 140px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.taskSection {
+  /* background-color: blue; */
+  width: 1150px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.card {
+  /* background-color: red; */
+  width: 270px;
+  height: 145px;
+  padding: 25px;
+  border: 4px solid teal;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+.cardButton {
+  width: 130px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.deleteButton {
+  border: 2px solid red;
+  margin-right: 10px;
+}
+
+.cancelButton,
+.completeButton {
+  border: 2px solid green;
+}
