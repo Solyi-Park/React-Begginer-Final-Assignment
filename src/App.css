@@ -82,7 +82,8 @@
   width: 130px;
   height: 40px;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 8px;  
+  transition: 0.2s;
 }
 
 .deleteButton {
@@ -90,7 +91,22 @@
   margin-right: 10px;
 }
 
+.deleteButton:hover {
+  background-color: red;
+  margin-right: 10px;
+  color: white;
+  font-weight: 600;
+}
+
 .cancelButton,
 .completeButton {
   border: 2px solid green;
 }
+
+.cancelButton:hover,
+.completeButton:hover {
+  background-color: green;
+  color: white;
+  font-weight: 600;
+}
+
