@@ -44,15 +44,16 @@ function App() {
   const handleCompleteBtn = (item) => {
     // 해당 카드의 status를 변경해준다.
     const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, status: "done" } : null;
+      return card.id === item.id ? { ...card, status: "done" } : card;
     });
     setCards(updatedCards);
+    console.log(cards);
   };
 
   // 취소 버튼 클릭
   const handleCancelBtn = (item) => {
     const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, status: "working" } : null;
+      return card.id === item.id ? { ...card, status: "working" } : card;
     });
     setCards(updatedCards);
   };
