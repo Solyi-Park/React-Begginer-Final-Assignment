@@ -3,11 +3,14 @@ import "./App.css";
 
 function App() {
   const [cards, setCards] = useState([
-    { id: 1, title: "Sample task", content: "Sample detailed content" },
+    {
+      id: 1,
+      title: "Sample task",
+      content: "Sample detailed content",
+      status: "working",
+    },
   ]);
-  const [done, setDone] = useState([
-    { id: 1, title: " task", content: "Sample detailed content" },
-  ]);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const handleChangeTitle = (e) => setTitle(e.target.value);
@@ -19,6 +22,7 @@ function App() {
       id: cards.length + 1,
       title,
       content,
+      status: "working",
     };
     if (title == "") {
       alert("제목을 입력해주세요. ");
@@ -38,32 +42,19 @@ function App() {
 
   // 완료 버튼 클릭
   const handleCompleteBtn = (item) => {
-    // 클릭하면 cards에서 해당 카드를 지운다
-    const updateCards = cards.filter((card) => card.id !== item.id);
-    setCards(updateCards);
-    // done section에 카드를 붙인다.
-    const isDone = {
-      id: done.length + 1,
-      title: item.title,
-      content: item.content,
-    };
-      const moveToDone = [...done, isDone];
-      setDone(moveToDone);
+    // 해당 카드의 status를 변경해준다.
+    const updatedCards = cards.map((card) => {
+      return card.id === item.id ? { ...card, status: "done" } : null;
+    });
+    setCards(updatedCards);
   };
 
   // 취소 버튼 클릭
-  const handleCancelBtn = (clickedItem) => {
-    // 클릭하면 cards에서 해당 카드를 지운다
-    const updateDoneCards = done.filter((doneItem) => doneItem.id !== clickedItem.id);
-    setDone(updateDoneCards);
-    // done section에 카드를 붙인다.
-    const notDone = {
-      id: done.length + 1,
-      title: clickedItem.title,
-      content: clickedItem.content,
-    };
-      const moveToWorking = [...cards, notDone];
-      setCards(moveToWorking);
+  const handleCancelBtn = (item) => {
+    const updatedCards = cards.map((card) => {
+      return card.id === item.id ? { ...card, status: "working" } : null;
+    });
+    setCards(updatedCards);
   };
 
   return (
@@ -90,7 +81,7 @@ function App() {
           />
         </div>
         <button onClick={handleAddBtnClick} className="addButton">
-          추가하기
+          ADD
         </button>
       </div>
       <div className="taskSection workingSection">
@@ -99,7 +90,7 @@ function App() {
         </div>
         <div className="cardContainer">
           {cards.map((item) => {
-            return (
+            return item.status === "working" ? (
               <div key={item.id} className="card">
                 <div>
                   <h2>{item.title}</h2>
@@ -110,17 +101,17 @@ function App() {
                     onClick={() => handleDeleteBtn(item.id)}
                     className="cardButton deleteButton"
                   >
-                    삭제하기
+                    Delete
                   </button>
                   <button
                     onClick={() => handleCompleteBtn(item)}
                     className="cardButton completeButton"
                   >
-                    완료
+                    Done!
                   </button>
                 </div>
               </div>
-            );
+            ) : null;
           })}
         </div>
       </div>
@@ -129,8 +120,8 @@ function App() {
           <h2>Done..! 🎉</h2>
         </div>
         <div className="cardContainer">
-          {done.map((item) => {
-            return (
+          {cards.map((item) => {
+            return item.status === "done" ? (
               <div className="card">
                 <div>
                   <h2>{item.title}</h2>
@@ -141,17 +132,17 @@ function App() {
                     onClick={() => handleDeleteBtn(item.id)}
                     className="cardButton deleteButton"
                   >
-                    삭제하기
+                    Delete
                   </button>
                   <button
-                    onClick={()=> handleCancelBtn(item)}
+                    onClick={() => handleCancelBtn(item)}
                     className="cardButton cancelButton"
                   >
-                    취소
+                    Back to working
                   </button>
                 </div>
               </div>
-            );
+            ) : null;
           })}
         </div>
       </div>
