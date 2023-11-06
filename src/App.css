@@ -1,22 +1,26 @@
+.TodoList{
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
 .header {
   /* background-color: red; */
   max-width: 1160px;
   height: 48px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px 0 20px;
-  margin: 0 auto;
+  padding: 0 20px;
   border: 1px solid #ddd;
 }
 .inputContainer {
   background-color: #eee;
   width: 1140px;
   height: 100px;
-  margin: 0 auto;
   padding: 0 30px;
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
@@ -51,17 +55,18 @@
 }
 
 .taskSection {
-  /* background-color: blue; */
   width: 1150px;
-  /* height: 500px; */
-  margin: 0 auto;
   padding: 0 25px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+
 }
 .cardContainer {
+  /* background-color: blue; */
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -84,6 +89,7 @@
   background-color: transparent;
   border-radius: 8px;  
   transition: 0.2s;
+  /* position: fixed; */
 }
 
 .deleteButton {
