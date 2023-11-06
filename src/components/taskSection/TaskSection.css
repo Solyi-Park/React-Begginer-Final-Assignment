@@ -1,0 +1,14 @@
+.taskSection {
+  width: 1150px;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.cardContainer {
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

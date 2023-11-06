@@ -1,0 +1,46 @@
+.card {
+  /* background-color: red; */
+  width: 270px;
+  height: 145px;
+  padding: 25px;
+  border: 4px solid teal;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px;
+}
+
+.cardButton {
+  width: 130px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: 0.2s;
+  /* position: fixed; */
+}
+
+.deleteButton {
+  border: 2px solid red;
+  margin-right: 10px;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  margin-right: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.cancelButton,
+.completeButton {
+  border: 2px solid green;
+}
+
+.cancelButton:hover,
+.completeButton:hover {
+  background-color: green;
+  color: white;
+  font-weight: 600;
+}
