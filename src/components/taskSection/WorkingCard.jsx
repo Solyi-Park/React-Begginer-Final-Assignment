@@ -1,4 +1,4 @@
-import "../Card.css";
+import "./Card.css";
 
 const WorkingCard = ({ cards, handleDeleteBtn, handleCompleteBtn }) => {
   return cards.map((item) => {

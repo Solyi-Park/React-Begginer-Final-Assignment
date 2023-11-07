@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
-import WorkingSection from "./components/taskSection/working/WorkingSection";
-import DoneSection from "./components/taskSection/done/DoneSection";
+import "./components/taskSection/TaskSection.css";
+import "./components/taskSection/Card.css";
+import WorkingCard from "./components/taskSection/WorkingCard";
+import DoneCard from "./components/taskSection//DoneCard";
 import InputContainer from "./components/inputContainer/InputContainer";
 
 function App() {
@@ -77,16 +79,26 @@ function App() {
         handleChangeContent={handleChangeContent}
         handleAddBtnClick={handleAddBtnClick}
       />
-      <WorkingSection
-        cards={cards}
-        handleDeleteBtn={handleDeleteBtn}
-        handleCompleteBtn={handleCompleteBtn}
-      />
-      <DoneSection
-        cards={cards}
-        handleDeleteBtn={handleDeleteBtn}
-        handleCancelBtn={handleCancelBtn}
-      />
+      <div className="taskSection workingSection">
+        <h2>Working.. 🔥</h2>
+        <div className="cardContainer">
+          <WorkingCard
+            cards={cards}
+            handleDeleteBtn={handleDeleteBtn}
+            handleCompleteBtn={handleCompleteBtn}
+          />
+        </div>
+      </div>
+      <div className="taskSection doneSection">
+        <h2>Done..! 🎉</h2>
+        <div className="cardContainer">
+          <DoneCard
+            cards={cards}
+            handleDeleteBtn={handleDeleteBtn}
+            handleCancelBtn={handleCancelBtn}
+          />
+        </div>
+      </div>
     </div>
   );
 }
