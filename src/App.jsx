@@ -1,19 +1,19 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
-import "./components/taskSection/TaskSection.css";
-import "./components/taskSection/Card.css";
-import WorkingCard from "./components/taskSection/WorkingCard";
-import DoneCard from "./components/taskSection//DoneCard";
-import InputContainer from "./components/inputContainer/InputContainer";
+import "./components/todoList/TaskSection.css";
+import "./components/todoList/Card.css";
+import InputContainer from "./components/input";
+import TodoList from "./components/todoList";
+import uuid from "react-uuid";
 
 function App() {
   const inputRef = useRef(null);
   const [cards, setCards] = useState([
     {
-      id: 1,
+      id: uuid(),
       title: "Sample task",
       content: "Sample detailed content",
-      isDone: "false",
+      isDone: false,
     },
   ]);
   const [title, setTitle] = useState("");
@@ -24,10 +24,10 @@ function App() {
   // ADD 버튼 클릭
   const handleAddBtnClick = (e) => {
     const newCard = {
-      id: cards.length + 1,
+      id: uuid(),
       title,
       content,
-      isDone: "false",
+      isDone: false,
     };
     if (title == "") {
       alert("제목을 입력해주세요. ");
@@ -38,7 +38,6 @@ function App() {
       e.preventDefault();
       setTitle(""); // 왜 null은 안되나요..?
       setContent("");
-
       inputRef.current.focus();
     }
   };
@@ -52,7 +51,7 @@ function App() {
   // Done 버튼 클릭
   const handleCompleteBtn = (item) => {
     const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, isDone: "true" } : card;
+      return card.id === item.id ? { ...card, isDone: true } : card;
     });
     setCards(updatedCards);
   };
@@ -60,7 +59,7 @@ function App() {
   // Back to Working 버튼 클릭
   const handleCancelBtn = (item) => {
     const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, isDone: "false" } : card;
+      return card.id === item.id ? { ...card, isDone: false } : card;
     });
     setCards(updatedCards);
   };
@@ -80,26 +79,18 @@ function App() {
         handleAddBtnClick={handleAddBtnClick}
       />
       <div className="taskSection workingSection">
-        <h2>Working.. 🔥</h2>
-        <div className="cardContainer">
-          <WorkingCard
-            cards={cards}
-            handleDeleteBtn={handleDeleteBtn}
-            handleCompleteBtn={handleCompleteBtn}
-          />
-        </div>
+      <TodoList cards={cards} 
+      handleDeleteBtn={handleDeleteBtn} 
+      handleCompleteBtn={handleCompleteBtn} 
+      handleCancelBtn={handleCancelBtn}
+      listIsDone={false}/>
+      <TodoList cards={cards} 
+      handleDeleteBtn={handleDeleteBtn} 
+      handleCompleteBtn={handleCompleteBtn} 
+      handleCancelBtn={handleCancelBtn}
+      listIsDone={true}/>
       </div>
-      <div className="taskSection doneSection">
-        <h2>Done..! 🎉</h2>
-        <div className="cardContainer">
-          <DoneCard
-            cards={cards}
-            handleDeleteBtn={handleDeleteBtn}
-            handleCancelBtn={handleCancelBtn}
-          />
-        </div>
       </div>
-    </div>
   );
 }
 
