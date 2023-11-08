@@ -1,4 +1,4 @@
-import "./inputContainer.css"
+import "./index.css"
 const InputContainer = ({
   inputRef,
   title,

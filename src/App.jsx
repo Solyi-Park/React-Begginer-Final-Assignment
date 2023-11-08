@@ -48,18 +48,10 @@ function App() {
     setCards(updateCards);
   };
 
-  // Done 버튼 클릭
-  const handleCompleteBtn = (item) => {
+  // Done / Back to Working 버튼 클릭
+  const handleCompleteCancelBtn = (item) => {
     const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, isDone: true } : card;
-    });
-    setCards(updatedCards);
-  };
-
-  // Back to Working 버튼 클릭
-  const handleCancelBtn = (item) => {
-    const updatedCards = cards.map((card) => {
-      return card.id === item.id ? { ...card, isDone: false } : card;
+      return card.id === item.id ? { ...card, isDone: !card.isDone } : card;
     });
     setCards(updatedCards);
   };
@@ -81,13 +73,11 @@ function App() {
       <div className="taskSection workingSection">
       <TodoList cards={cards} 
       handleDeleteBtn={handleDeleteBtn} 
-      handleCompleteBtn={handleCompleteBtn} 
-      handleCancelBtn={handleCancelBtn}
+      handleCompleteCancelBtn={handleCompleteCancelBtn} 
       listIsDone={false}/>
       <TodoList cards={cards} 
       handleDeleteBtn={handleDeleteBtn} 
-      handleCompleteBtn={handleCompleteBtn} 
-      handleCancelBtn={handleCancelBtn}
+      handleCompleteCancelBtn={handleCompleteCancelBtn} 
       listIsDone={true}/>
       </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function TodoList({
-    cards, handleDeleteBtn, handleCompleteBtn,handleCancelBtn,listIsDone
+    cards, handleDeleteBtn,handleCompleteCancelBtn,listIsDone,
 }) {
   return (
     <>
@@ -24,11 +24,7 @@ export default function TodoList({
                     Delete
                   </button>
                   <button
-                    onClick={() =>
-                        listIsDone
-                        ? handleCancelBtn(item)
-                        : handleCompleteBtn(item)
-                    }
+                    onClick={() =>handleCompleteCancelBtn(item)}
                     className="cardButton completeButton"
                   >
                     {listIsDone ? "Back to working!" : "Done!" }
